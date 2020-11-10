@@ -68,14 +68,20 @@ void parsingIPPacket(int* result, const unsigned char* netstr) {
 }
 
 void printIPPacket(int* result, const unsigned char* netstr){
-    for(int i = 0; i < VAL_LEN; i++) {
-        printf("%s : %d \n", value_string[i], result[i]);
-    }
 
-    printf("Source Address: ");
+    printf("\n########## Packet #############\n\n");
+    printf("\n------- Packet Info ---------\n\n");
+    for(int i = 0; i < VAL_LEN; i++) {
+        printf("* %s : %d \n", value_string[i], result[i]);
+    }
+    printf("\n---------- IP Info ----------\n\n");
+    printf("* Source IP: ");
     printIP(netstr, IP_SOURCE_ADDR);
-    printf("Destination Address: ");
+    printf("* Dest   IP: ");
     printIP(netstr, IP_DEST_ADDR);
+    printf("\n-----------------------------\n\n");
+
+    printf("\n\n###############################\n\n");
 
 }
 
