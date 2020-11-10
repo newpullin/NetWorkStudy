@@ -58,10 +58,10 @@ void parsingIPPacket(int* result, const unsigned char* netstr) {
     result[Version] = netstr[IP_HEADER ]>>4; 
     result[IHL] = ((netstr[IP_HEADER ]) & IP_HEADER_MASK ) * 4;
     result[TOS] = netstr[IP_TOS] >> 4;
-    result[TL] = netstr[IP_TL] * 0xf + netstr[IP_TL+1];
-    result[Identification] = netstr[IP_IDENTIFICATION ] * 0xf + netstr[IP_IDENTIFICATION +1];
+    result[TL] = netstr[IP_TL] * 256 + netstr[IP_TL+1];
+    result[Identification] = netstr[IP_IDENTIFICATION ] * 256 + netstr[IP_IDENTIFICATION +1];
     result[Flag] = netstr[IP_FRAGMENTATION] >> 5 ;
-    result[FragmentOffset] = (netstr[IP_FRAGMENTATION] & IP_FRAGMENTATION_MASK)*(0xff) + netstr[IP_FRAGMENTATION+1];
+    result[FragmentOffset] = (netstr[IP_FRAGMENTATION] & IP_FRAGMENTATION_MASK)*(256) + netstr[IP_FRAGMENTATION+1];
     result[TTL] = netstr[IP_TTL];
     result[Porotocol] = netstr[IP_PROTOCOL];
     result[HeaderChecksum] = netstr[IP_HEADER_CHECKSUM]; 
