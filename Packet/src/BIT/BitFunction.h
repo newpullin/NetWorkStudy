@@ -8,5 +8,6 @@
 #include "DefType.h"
 
 ushort nthos(ushort value);
+uint nthos_i(uint value);
 
 #endif //PACKETMANAGER_BITFUNCTION_H

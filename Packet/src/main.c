@@ -5,7 +5,7 @@
 int main()
 {
     FILE *fp = 0;
-    fopen_s(&fp, "../data/udp.pcap", "rb");
+    fopen_s(&fp, "../data/tcp.pcap", "rb");
     if (fp == 0)
     {
         perror("File open failed...");
@@ -28,6 +28,5 @@ int main()
         default: printf("Not Supported format \n"); break;
     }
     fclose(fp);
-    system("pause");
     return 0;
 }

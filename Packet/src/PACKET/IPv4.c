@@ -5,16 +5,12 @@
 
 #include "IPv4.h"
 #include "UDP.h"
+#include "TCP.h"
 
 void PrintIPv4(uint addr)
 {
     uchar *up = (uchar *)&addr;
-    int i = 0;
-    for (i = 0; i < 3; i++)
-    {
-        printf("%d.", up[i]);
-    }
-    printf("%d", up[i]);
+    printf("%d.%d.%d.%d", up[0], up[1], up[2], up[3]);
 
 }
 void ParseIPv4(uchar *base, uint len)
@@ -51,7 +47,7 @@ void ParseIPv4(uchar *base, uint len)
     switch (iph->protocol)
     {
         case PRO_ICMPv4: printf("> to be defined\n"); break;
-        case PRO_TCP: printf("> to be defined\n");  break;
+        case PRO_TCP: ParseTCP(next, len);  break;
         case PRO_UDP: ParseUDP(next, len); break;
         default: printf("> Not supported\n"); break;
     }
